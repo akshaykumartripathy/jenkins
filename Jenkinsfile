@@ -1,6 +1,6 @@
 pipeline{
   stages{
-    stage(checkout sucess){
+    stage(checkout){
       steps{
         script{
           echo "sucessful!!!"
