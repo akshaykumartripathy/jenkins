@@ -6,6 +6,7 @@ pipeline{
         script{
           echo "sucessful!!!"
 	  echo "test1"
+	  echo "test2"
         }
       }
     }
