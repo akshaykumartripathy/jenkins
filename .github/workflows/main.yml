@@ -60,4 +60,26 @@ jobs:
       
   # Use the output from the `test` step
       - name: Print the found email
-        run: echo "The email is ${{ steps.test.outputs.email }}"        
+        run: echo "The email is ${{ steps.test.outputs.email }}"
+        
+  Send-mail:
+      needs: [email]
+      runs-on: ubuntu-latest
+      name: Sending email
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+    # mail server settings
+      server_address: smtp.gmail.com
+      server_port: 25
+    # user credentials
+      username: ${{ steps.test.outputs.email }}
+    #password: ${{ secrets.EMAIL_PASSWORD }}
+    # email subject
+      subject: Test ${{ github.job }} execution finished ${{ job.status }}
+    # email body as text
+      body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+    # comma-separated string, send email to
+      to: ${{ steps.test.outputs.email }}
+    # from email name
+    from: ${{ steps.test.outputs.email }}        
