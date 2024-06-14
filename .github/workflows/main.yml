@@ -82,4 +82,4 @@ jobs:
     # comma-separated string, send email to
       to: ${{ steps.test.outputs.email }}
     # from email name
-    from: ${{ steps.test.outputs.email }}        
+      from: ${{ steps.test.outputs.email }}        
