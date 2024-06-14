@@ -13,7 +13,10 @@ jobs:
       - name: Run Bash script
         run: bash test.sh
   test-script:
+    needs: [bash-script]
     runs-on: ubuntu-latest
+    environment:
+      name: DEV
 
     steps:
       - name: Checkout code
