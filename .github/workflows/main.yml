@@ -15,6 +15,30 @@ jobs:
   test-script:
     needs: [bash-script]
     runs-on: ubuntu-latest
+    #environment:
+      #name: DEV
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Bash script
+        run: bash test1.sh
+  A-script:
+    needs: [bash-script]
+    runs-on: ubuntu-latest
+    #environment:
+      #name: DEV
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Bash script
+        run: bash test1.sh
+  B-script:
+    needs: [bash-script]
+    runs-on: ubuntu-latest
     environment:
       name: DEV
 
@@ -23,4 +47,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Bash script
-        run: bash test1.sh        
+        run: bash test1.sh         
