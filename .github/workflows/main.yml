@@ -47,4 +47,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Bash script
-        run: bash test1.sh         
+        run: bash test1.sh
+  email:
+    runs-on: ubuntu-latest
+    name: A job to get a users email
+    steps:
+      - name: get email
+        id: test
+        uses: evvanErb/get-github-email-by-username-action@v1.25
+        with:
+          github-username: ${{ github.triggering_actor }}
+      
+  # Use the output from the `test` step
+      - name: Print the found email
+        run: echo "The email is ${{ steps.test.outputs.email }}"        
